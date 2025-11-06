@@ -27,9 +27,9 @@ app.add_middleware(
 
 # Définir les chemins des fichiers de données nettoyées
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-films_path = os.path.join(BASE_DIR, "data/cleaned/films.csv")
-livres_path = os.path.join(BASE_DIR, "data/cleaned/livres.csv")
-musiques_path = os.path.join(BASE_DIR, "data/cleaned/musiques.csv")
+films_path = os.path.join(BASE_DIR, "data/data_cleaned/films.csv")
+livres_path = os.path.join(BASE_DIR, "data/data_cleaned/livres.csv")
+musiques_path = os.path.join(BASE_DIR, "data/data_cleaned/musiques.csv")
 
 
 # Vérifier si les fichiers existent, sinon les générer
