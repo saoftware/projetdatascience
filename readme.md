@@ -26,7 +26,7 @@ Lien de l'API : http://localhost:8000
 Lien de docs l'API : http://localhost:8000/docs
 
 Lancer l'interface du chatbot : 
-    - Sur windows : streamlit run src\dashboard.py
+    - Sur windows : streamlit run src\dashboard.py 
     - Sur Linux : streamlit run src/dashboard.py
 
 
