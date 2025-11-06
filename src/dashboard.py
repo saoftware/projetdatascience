@@ -320,10 +320,10 @@ if user_input:
                     pass
             
             # Fallback si ni l'API ni les modules n'ont donné de résultats
-            #if not results and not df.empty:
-            #    title_column = "titre" if "titre" in df.columns else "title" if "title" in df.columns else df.columns[0]
-            #    sample_df = df.sample(min(5, len(df)))
-            #    results = [{"titre": row[title_column]} for _, row in sample_df.iterrows()]
+            if not results and not df.empty:
+                title_column = "titre" if "titre" in df.columns else "title" if "title" in df.columns else df.columns[0]
+                sample_df = df.sample(min(5, len(df)))
+                results = [{"titre": row[title_column]} for _, row in sample_df.iterrows()]
             
             # Construction de la réponse finale
             full_response = intro + "\n\n"
