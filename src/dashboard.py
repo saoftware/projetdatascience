@@ -9,7 +9,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'projet_datascience'))
 
 # Import des modules du projet
 try:
-    from modules import recommandation, config, data_cleaning
+    from modules.recommandation import df_livres, df_films, df_musiques, livres_recommandations, films_recommandations, musiques_recommandations
+    #from modules.config import
+    #from modules.data_cleaning import
+    
+    from modules import config, data_cleaning
     MODULES_LOADED = True
     print("Modules chargés avec succès!")
 except ImportError as e:
@@ -68,11 +72,11 @@ def load_data(content_type):
     if MODULES_LOADED:
         # Utilisation directe des dataframes du module de recommandation
         if content_type == "Livres":
-            return recommandation.df_livres
+            return df_livres
         elif content_type == "Films":
-            return recommandation.df_films
+            return df_films
         else:  # Musiques
-            return recommandation.df_musiques
+            return df_musiques
     else:
         # Fallback si les modules ne sont pas chargés
         if content_type == "Livres":
@@ -177,7 +181,7 @@ elif search_method == "Par titre similaire":
                 elif MODULES_LOADED:
                     # Utilisation des fonctions du module de recommandation
                     if content_type == "Livres":
-                        results = recommandation.livres_recommandations(selected_title)
+                        results = livres_recommandations(selected_title)
                         if results:
                             st.success(f"Titres similaires à '{selected_title}' (via modules)")
                             for i, item in enumerate(results, 1):
@@ -185,7 +189,7 @@ elif search_method == "Par titre similaire":
                         else:
                             st.warning("Aucun titre similaire trouvé.")
                     elif content_type == "Films":
-                        results = recommandation.films_recommandations(selected_title)
+                        results = films_recommandations(selected_title)
                         if results:
                             st.success(f"Titres similaires à '{selected_title}' (via modules)")
                             for i, item in enumerate(results, 1):
@@ -193,7 +197,7 @@ elif search_method == "Par titre similaire":
                         else:
                             st.warning("Aucun titre similaire trouvé.")
                     else:  # Musiques
-                        results = recommandation.musiques_recommandations(selected_title)
+                        results = musiques_recommandations(selected_title)
                         if results:
                             st.success(f"Titres similaires à '{selected_title}' (via modules)")
                             for i, item in enumerate(results, 1):
@@ -309,11 +313,11 @@ if user_input:
             if not results and MODULES_LOADED:
                 try:
                     if content_type == "Livres":
-                        results = recommandation.livres_recommandations(search_term)
+                        results = livres_recommandations(search_term)
                     elif content_type == "Films":
-                        results = recommandation.films_recommandations(search_term)
+                        results = films_recommandations(search_term)
                     else:  # Musiques
-                        results = recommandation.musiques_recommandations(search_term)
+                        results = musiques_recommandations(search_term)
                 except:
                     pass
             
